@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="/">2019B.giron.aptik</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li *ngIf="userService.isLoggedIn()" class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li *ngIf="userService.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/rooms/find-rooms">Rooms</a>
+      </li>
+      <li *ngIf="userService.isLoggedIn()" ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle my-sm-0" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Elements</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item mr-2" routerLink="elements/find-element">Search Element</a>
+          <a *ngIf="userService.userRole()" class="dropdown-item mr-2" routerLink="/elements/new-element">New Element</a>
+          <a class="dropdown-item mr-2" routerLink="/elements/update-element">Update Element</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <a style="color:white;" class="nav-link" *ngIf="userService.isLoggedIn()" routerLink="/">Points: {{points}}</a>
+      <button *ngIf="!userService.isLoggedIn()" class="btn button my-2 mr-sm-2" routerLink="/users/login" type="submit">Log In</button>
+      <button *ngIf="!userService.isLoggedIn()" class="btn button my-2 my-sm-0" routerLink="/users/register" type="submit">Sign Up</button>
+      <li ngbDropdown *ngIf="userService.isLoggedIn()" class="btn button my-2 mr-sm-2" >
+        <a ngbDropdownToggle id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{email}}</a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item mr-2" routerLink="/users/update">Edit User</a>
+          <a (click)="userService.logoutUser()" class="dropdown-item mr-2" routerLink="#">Log Out</a>
+        </div>
+      </li>
+    </form>
+  </div>
+</nav>

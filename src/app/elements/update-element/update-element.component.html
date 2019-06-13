@@ -1,0 +1,78 @@
+<form class='container'>
+    <div class="position-static"> 
+        <div class="section-title wow zoomIn">
+          <h2 style="color:rgb(255, 255, 255)">Let's add new Element to our Home</h2>
+          <span></span>
+        </div>
+      </div>
+<div id='search-div'>
+    <nav class="navbar">
+        <form class="form-inline" name = "form" #f="ngForm" (ngSubmit)="find()">
+          <input class="form-control mr-sm-2" name="id" type="search" placeholder="Enter Element ID" aria-label="Search" [(ngModel)]="model.id">
+          <button (click)="setClicked('search')" class="btn btn-sm btn-outline-success my-2 my-sm-0" id='search-button' type="submit">Search</button>
+        </form>
+      </nav>
+</div>
+
+
+<div class="class col">
+    <form *ngIf="getClicked() == 'search'" class = "container" name = "form" #f="ngForm" (ngSubmit)="updateElement()">
+            <label for="elementType">Element Type</label>
+            <input type="text" class="form-control" id="elementType" aria-describedby="elementType" value="{{excitingElement.elementType}}"
+            [(ngModel)]="newElement.elementType" name="elementType">
+        <small id="username" class="form-text text-muted">Lamp / Air-Condition...</small>
+    <label for="name">Name</label>
+    <input [(ngModel)]="newElement.name" type="text" class="form-control" id="name" aria-describedby="name" value="{{excitingElement.name}}"
+    name="name">
+    <small id="username" class="form-text text-muted">Please set your first name only</small>
+      <label for="expired">Expired</label>
+      <input [(ngModel)]="newElement.expired" type="text" class="form-control"id="expired" aria-describedby="expired" value="{{excitingElement.expired}}"
+      name="expired">
+      <small id="expired" class="form-text text-muted">True / False Only</small>
+        <label for="createdTime">Created Time</label>
+        <input [(ngModel)]="newElement.created" class="form-control" type="datetime-local" value="{{excitingElement.created}}" id="example-datetime-local-input" aria-describedby="createdTime"
+        name="createdTime">
+        <small id="createdTime" class="form-text text-muted">When this Element arrived to our home?</small>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="creatorName">Creator name</label>
+                <input [(ngModel)]="newElement.creator.email" type="text" class="form-control" id="creatorName" value="{{excitingElement.creator.email}}" value= {{excitingElement.creator.email}} 
+                name="creatorName">
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Creator Smartspace</label>
+                <input [(ngModel)]="newElement.creator.smartspace" name="smartspace" type="text" disabled class="form-control" id="smartspace" aria-describedby="smartspace" value= {{excitingElement.creator.smartspace}}>
+                <div class="invalid-feedback">
+                  Set your Smartspace
+                </div>
+              </div>
+            </div>
+              <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="lat">Lat</label>
+                    <input [(ngModel)]="newElement.latlng.lat" type="text" class="form-control" id="lat" value="{{excitingElement.latlng.lat}}"
+                    name="lat" type="number">
+                    <div class="invalid-feedback">
+                        Please set your Lat Location
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lng">Lng</label>
+                    <input [(ngModel)]="newElement.latlng.lng" type="text" class="form-control" id="lng" value="{{excitingElement.latlng.lng}}"
+                    name="lng" type="number">
+                    <div class="invalid-feedback">
+                      Please set your Lng Location
+                    </div>
+                  </div>
+                </div>
+                    <label for="elementProperties">More Properties</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="elementProperties"
+                    [(ngModel)]="newElement.elementProperties" value='{{excitingElement.elementProperties | json}}'></textarea>
+              <br>
+                    <button type="submit" class="btn btn-primary">submit</button>
+                  </form>
+                </div>
+              </form>

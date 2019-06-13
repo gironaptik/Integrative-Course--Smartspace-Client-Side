@@ -1,0 +1,71 @@
+<div class="position-static"> 
+    <div class="section-title wow zoomIn">
+      <h2 style="color:rgb(255, 255, 255)">Room List</h2>
+      <span></span>
+    </div>
+  </div>
+<div class="mat-elevation-z8 data-table">
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+  
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.key.id}}</mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+      </ng-container>
+  
+            <!-- Name Column -->
+      <ng-container matColumnDef="elementType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Element Type</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.elementType}}</mat-cell>
+      </ng-container>
+
+            <!-- Name Column -->
+      <ng-container matColumnDef="expired">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Expired</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.expired}}</mat-cell>
+      </ng-container>
+
+            <!-- Name Column -->
+      <ng-container matColumnDef="creator">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Creator</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.creator.email}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="elementProperties">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Properties</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.elementProperties | json}}</mat-cell>
+        </ng-container>
+
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+      [length]="40"
+      [pageIndex]="0"
+      [pageSize]="50"
+      [pageSizeOptions]="[3, 6, 10, 20]">
+    </mat-paginator>
+  </div>
+
+  <div id = "search" class="position-static"> 
+      <div class="section-title wow zoomIn">
+        <h2 style="color:rgb(255, 255, 255)">Do you want to open / close the room's door?</h2>
+        <span></span>
+      </div>
+    </div>
+    <div id='search-div'>
+        <nav class="navbar">
+            <form class="form-inline" name = "form" #f="ngForm" (ngSubmit)="doorChange()">
+              <input [(ngModel)]="id" class="form-control mr-sm-2" name="id" type="search" placeholder="Enter Door ID" aria-label="Search">
+              <button class="btn btn-sm btn-outline-success my-2 my-sm-0" id='search-button' type="submit">Change Door Status</button>
+            </form>
+          </nav>
+    </div>

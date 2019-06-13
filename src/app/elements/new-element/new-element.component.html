@@ -1,0 +1,73 @@
+
+<form class = "container" name = "form" #f="ngForm" (ngSubmit)="sendNewElement()">
+    <div class="position-static"> 
+        <div class="section-title wow zoomIn">
+          <h2 style="color:rgb(255, 255, 255)">Add New Element</h2>
+        </div>
+      </div>
+            <div class="form-group">
+                <label for="elementType">Element Type</label>
+                <input type="text" class="form-control" id="elementType" aria-describedby="elementType" placeholder="Element Type"
+                [(ngModel)]="model.elementType" name="elementType">
+            <small id="username" class="form-text text-muted">Lamp / Air-Condition...</small>
+        </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name"
+        [(ngModel)]="model.name" name="name">
+        <small id="username" class="form-text text-muted">Please set your first name only</small>
+      </div>
+      <div class="form-group">
+          <label for="expired">Expired</label>
+          <input type="text" class="form-control"id="expired" aria-describedby="expired" placeholder="Expired"
+          [(ngModel)]="model.expired" name="expired" #expired="ngModel">
+          <small id="expired" class="form-text text-muted">True / False Only</small>
+        </div>
+        <div class="form-group">
+            <label for="createdTime">Created Time</label>
+            <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" aria-describedby="createdTime" placeholder="Created Time"
+            [(ngModel)]="model.created" name="createdTime">
+            <small id="createdTime" class="form-text text-muted">When this Element arrived to our home?</small>
+          </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="creatorName">Creator name</label>
+                    <input type="text" class="form-control" id="creatorName" value="creatorName" placeholder="Stan Lee"required 
+                    [(ngModel)]="model.creator.email" name="creatorName">
+                    <div class="invalid-feedback">
+                      Valid first name is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName">Creator Smartspace</label>
+                    <input type="text" disabled class="form-control" id="smartspace" aria-describedby="smartspace" placeholder="2019B.giron.aptik">
+                    <div class="invalid-feedback">
+                      Set your Smartspace
+                    </div>
+                  </div>
+                </div>
+                  <div class="row">
+                      <div class="col-md-6 mb-3">
+                        <label for="lat">Lat</label>
+                        <input type="text" class="form-control" id="lat" placeholder="Lat" value="lat"  
+                        [(ngModel)]="model.latlng.lat" name="lat" type="number">
+                        <div class="invalid-feedback">
+                            Please set your Lat Location
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-3">
+                        <label for="lng">Lng</label>
+                        <input type="text" class="form-control" id="lng" placeholder="Lng" value="lng"
+                        [(ngModel)]="model.latlng.lng" name="lng" type="number">
+                        <div class="invalid-feedback">
+                          Please set your Lng Location
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="elementProperties">More Properties</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="elementProperties" [(ngModel)]="model.elementProperties"
+                        placeholder='{"status": "Open", "state": "On", "volume": "30"}'></textarea>
+</div>
+    <button type="submit" class="btn btn-primary">submit</button>
+  </form>

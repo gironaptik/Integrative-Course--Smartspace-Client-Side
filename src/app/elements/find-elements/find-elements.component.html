@@ -1,0 +1,101 @@
+<div class="row" id = 'primary'>
+  <div class="col-2" >
+      <button type="button" (click)="setClicked('all')" class="btn btn-primary btn-lg">Find All Elements</button>
+      <button type="button" (click)="setClicked('specific')" class="btn btn-primary btn-lg">Find Specific Element</button>
+      <button type="button" (click)="setActionClicked('onoff')" class="btn btn-warning btn-lg">Turn On / Off Element</button>
+      <button type="button" (click)="setActionClicked('volume')" class="btn btn-warning btn-lg">Change Volume</button>
+  </div>
+  <div class="class col">
+      <div *ngIf="getClicked() == null"class="section-title wow zoomIn">
+          <h2 style="color:rgb(255, 255, 255)">Please choose from the Catagories</h2>
+          <span></span>
+        </div>
+      <div *ngIf="getClicked() == 'all'"class="section-title wow zoomIn">
+         <table-pagination></table-pagination>
+          <span></span>
+       </div>
+
+       <div *ngIf="getClicked() == 'specific' || getClicked() == 'find'">
+          <nav class="navbar">
+              <form class="form-inline" name = "form" #f="ngForm" (ngSubmit)="find()">
+                <input class="form-control mr-sm-2" name="id" type="search" placeholder="Enter Element ID" aria-label="Search" [(ngModel)]="model.id">
+                <button (click)="setClicked('find')" class="btn btn-sm btn-outline-success my-2 my-sm-0" id='search-button' type="submit">Search</button>
+              </form>
+            </nav>
+      </div>
+
+      <div class="class col">
+      <form *ngIf="getClicked() == 'find'" class = "container" name = "form" #f="ngForm">
+              <label for="elementType">Element Type</label>
+              <input type="text" class="form-control" id="elementType" aria-describedby="elementType" placeholder="{{element.elementType}}"
+              name="elementType">
+          <small id="username" class="form-text text-muted">Lamp / TV</small>
+      <label for="name">Name</label>
+      <input disabled type="text" class="form-control" id="name" aria-describedby="name" placeholder="{{element.name}}"
+      name="name">
+      <small id="username" class="form-text text-muted">Please set your first name only</small>
+        <label for="expired">Expired</label>
+        <input disabled type="text" class="form-control"id="expired" aria-describedby="expired" placeholder="{{element.expired}}"
+        name="expired">
+        <small id="expired" class="form-text text-muted">True / False Only</small>
+          <label for="createdTime">Created Time</label>
+          <input disabled class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input" aria-describedby="createdTime" placeholder={{element.created}}
+          name="createdTime">
+          <small id="createdTime" class="form-text text-muted">When this Element arrived to our home?</small>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="creatorName">Creator name</label>
+                  <input disabled type="text" class="form-control" id="creatorName" value="{{element.creator.email}}" placeholder= {{element.creator.email}} 
+                  name="creatorName">
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Creator Smartspace</label>
+                  <input disabled type="text" disabled class="form-control" id="smartspace" aria-describedby="smartspace" placeholder= {{element.creator.smartspace}}>
+                  <div class="invalid-feedback">
+                    Set your Smartspace
+                  </div>
+                </div>
+              </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                      <label for="lat">Lat</label>
+                      <input disabled type="text" class="form-control" id="lat" placeholder="{{element.latlng.lat}}" value="lat"  
+                      name="lat" type="number">
+                      <div class="invalid-feedback">
+                          Please set your Lat Location
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="lng">Lng</label>
+                      <input disabled type="text" class="form-control" id="lng" placeholder="{{element.latlng.lng}}" value="lng"
+                      name="lng" type="number">
+                      <div class="invalid-feedback">
+                        Please set your Lng Location
+                      </div>
+                    </div>
+                  </div>
+                      <label for="elementProperties">More Properties</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="elementProperties" disabled
+                      placeholder='{{element.elementProperties | json}}'></textarea>
+                    </form>
+                  </div>
+                  <div *ngIf="getActionClicked() == 'onoff'" id='search-div'>
+                      <nav class="navbar">
+                          <form class="form-inline" name = "form" #f="ngForm" (ngSubmit)="onOffChange()">
+                            <input [(ngModel)]="id"class="form-control mr-sm-2" name="id" type="search" placeholder="Enter Element ID" aria-label="Search">
+                            <button class="btn btn-sm btn-outline-success my-2 my-sm-0" id='search-button' type="submit">Change element State</button>
+                          </form>
+                        </nav>
+                  </div>
+                  <div *ngIf="getActionClicked() == 'volume'" id='search-div'>
+                      <nav class="navbar">
+                          <form class="form-inline" name = "form" #f="ngForm" (ngSubmit)="volumeChange()">
+                            <input [(ngModel)]="actionVolume.element.id" class="form-control mr-sm-2" name="id" type="search" placeholder="Enter Element ID" aria-label="Search">
+                            <input [(ngModel)]="actionVolume.properties" class="form-control mr-sm-2" name="properties" placeholder="Set Volume value" aria-label="Search">
+                            <button class="btn btn-sm btn-outline-success my-2 my-sm-0" id='search-button' type="submit">Update Volume</button>
+                          </form>
+                        </nav>
+                  </div>

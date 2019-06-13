@@ -1,0 +1,37 @@
+form {padding-top: 100px}
+form {padding-left: 100px}
+
+html, body{
+    padding: 50px;
+    padding-top: 60px;
+}
+
+label {
+    color: rgb(255, 255, 255);
+}
+
+div{
+    padding: auto;
+}
+
+button{
+    margin: 5px;
+    height: 50px;
+    width: 250px;
+}
+
+#search-button {
+    margin: auto;
+    height: auto;
+    width: auto;
+ }
+
+form{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+#primary{
+    padding: 60px;
+}

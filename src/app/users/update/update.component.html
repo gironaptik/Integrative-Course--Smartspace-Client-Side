@@ -1,0 +1,42 @@
+
+<form class = "container" name = "form" #f="ngForm" (ngSubmit)="updateUser()">
+    <div class="position-static"> 
+        <div class="section-title wow zoomIn">
+          <h2 style="color:rgb(255, 255, 255)">Edit your user</h2>
+          <span></span>
+        </div>
+      </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="text" class="form-control" id="email" aria-describedby="email" value="{{existingModel.key.email}}" 
+      disabled name="email">
+      <small id="emailHelp" class="form-text text-muted">Can't change That.</small>
+    </div>
+    <div class="form-group">
+        <label for="username">User Name</label>
+        <input type="text" class="form-control" id="username" aria-describedby="username" value="{{existingModel.username}}"
+        [(ngModel)]="updateModel.username" name="name">
+        <small id="username" class="form-text text-muted">Please set your name</small>
+      </div>
+    <div class="form-group">
+        <label for="smartspace">Smartspace Name</label>
+        <input type="text" disabled class="form-control" id="smartspace" aria-describedby="smartspace" value="2019B.giron.aptik">
+        <small id="emailHelp" class="form-text text-muted">You can't change the Smartspace name.</small>
+      </div>
+      <div class="form-group">
+          <label for="role">User Role</label>
+          <input type="text" class="form-control" id="role" aria-describedby="role" value="{{existingModel.role}}"
+          [(ngModel)]="updateModel.role" name="role">
+          <small id="username" class="form-text text-muted">PLAYER / MANAGER Only!</small>
+        </div> 
+
+
+        
+        
+      <div class="form-group">
+          <label for="avatar">Avatar</label>
+          <input type="text" class="form-control" id="avatar" value="{{existingModel.avatar}}" [(ngModel)]="updateModel.avatar" name="avatar">
+          <small id="emailHelp" class="form-text text-muted">Some nice Emojy will be fine</small>
+        </div>
+    <button type="submit" class="btn btn-primary" >Update</button>
+  </form>

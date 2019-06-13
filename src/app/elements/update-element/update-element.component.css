@@ -1,0 +1,31 @@
+form {padding-top: 70px}
+body {padding-left: 0px}
+
+.navbar{
+    height:6% !important;
+    padding: 0px;
+    margin: 0px;
+}
+
+label {
+    color: rgb(255, 255, 255);
+    padding: 0px;
+    margin: 0px;
+}
+
+#search-button {
+    margin: auto;
+    height: auto;
+    width: auto;
+    
+ }
+
+
+ button{
+    margin-left: 1030px;
+}
+
+h2{
+    padding: 0px;
+    margin: 0px;
+}
